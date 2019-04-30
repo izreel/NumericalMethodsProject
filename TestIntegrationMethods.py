@@ -20,4 +20,9 @@ def main():
 
     print(integration.composite_simpson(0, np.pi/2, h, 10))
 
+    print("User Input")
+    x = 2
+    funct = eval(input("Please input a function(x): "))
+
+    print(funct)
 main()
