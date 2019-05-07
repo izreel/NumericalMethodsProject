@@ -123,5 +123,4 @@ dmypy.json
 .pyre/
 
 # Visual Code
-.visualcode/
 .vscode/settings.json
