@@ -1,7 +1,7 @@
-from numpy import np
-
+import numpy as np
 #used when user inputs one of the following functions
 #will call the numpy implementation of the function
+
 def cos(x):
     return np.cos(x)
 
