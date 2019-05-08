@@ -1,3 +1,19 @@
+from numpy import np
+
+#used when user inputs one of the following functions
+#will call the numpy implementation of the function
+def cos(x):
+    return np.cos(x)
+
+def sin(x):
+    return np.sin(x)
+
+def exp(x):
+    return np.e
+
+def pi(x):
+    return np.pi
+
 class Integration:
     def midpoint_rule(self, a, b, f, n):
         '''Performs the Midpoint Rule or Rectangular Integration on interval [a,b]
