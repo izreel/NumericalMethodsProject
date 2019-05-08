@@ -19,6 +19,7 @@ def main():
     print(integration.composite_simpson(0, 10, g, 10))
 
     print(integration.composite_simpson(0, np.pi/2, h, 10))
+    #print(integration.simpson_rule(0, np.pi/2, h, 9))
 
     print("User Input")
     x = 2

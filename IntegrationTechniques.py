@@ -36,7 +36,9 @@ class Integration:
             :return: integration of function f on interval [a,b]
         '''
         h = (b - a) / n
-        final_sum = 0
+        final_sum = f(a) + f(b)
+        if n % 2:
+            raise ValueError("N must be even for Simpson's Rule")
 
         for i in range(1, n + 1):
             x = 0.5 * (2 * a + h * (2 * i -1))
