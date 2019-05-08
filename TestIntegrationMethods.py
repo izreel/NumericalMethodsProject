@@ -26,4 +26,3 @@ def main():
     funct = eval(input("Please input a function(x): "))
 
     print(funct)
-main()
