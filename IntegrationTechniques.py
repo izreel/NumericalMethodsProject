@@ -1,4 +1,4 @@
-from numpy import np
+import numpy as np
 
 #used when user inputs one of the following functions
 #will call the numpy implementation of the function
