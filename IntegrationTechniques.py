@@ -37,13 +37,17 @@ class Integration:
             :return: integration of function f on interval [a,b]
         '''
         h = (b - a) / n
-        final_sum = f(a) + f(b)
+        x = a
+        temp_xa = eval(f);
+        x = b
+        temp_xb = eval(f);
+        final_sum = (temp_xa + temp_xb) * 0.5
 
-        for i in range(1, n + 1):
+        for i in range(1, n, 1):
             x = a + i * h
             final_sum += eval(f)
 
-        return final_sum * h / 2
+        return final_sum * h 
 
     def simpson_rule(self, a, b, f, n):
         '''Performs the Midpoint Rule or Rectangular Integration on interval [a,b]
@@ -52,15 +56,18 @@ class Integration:
             :return: integration of function f on interval [a,b]
         '''
         h = (b - a) / n
-        final_sum = f(a) + f(b)
+        final_sum = 0
+    
         if n % 2:
             raise ValueError("N must be even for Simpson's Rule")
 
-        for i in range(1, n + 1):
-            x = 0.5 * (2 * a + h * (2 * i -1))
-            final_sum = eval(f)
-
-        return final_sum * h
+        for i in range( n + 1):
+            x = a + (i * h)
+            temp_sum = eval(f)
+            if (i != 0) and (i != n):
+                temp_sum *= (2 + (2 * (i % 2)))
+            final_sum += temp_sum
+        return ((b - a) / (3 *n)) * final_sum
 
     def composite_simpson(self, a, b, f, n):
         '''Performs Composite Simpson technique on interval [a,b]

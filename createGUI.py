@@ -15,9 +15,19 @@ def parseString(function_string):
 
 def integrate():
     new_string = parseString(function_string.get())
-   
     if integration_type_string.get() == "Midpoint Rule":
         print(integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))
+    elif integration_type_string.get() == "Trapezoidal Rule":
+        print(integration_object.trapezoidal_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))
+    elif integration_type_string.get() == "Simpson Rule":
+        print(integration_object.simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))
+    elif integration_type_string.get() == "Composite Midpoint Rule":
+        print(integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))
+    elif integration_type_string.get() == "Composite Trapezoidal Rule":
+        print(integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))
+    elif integration_type_string.get() == "Composite Simpson Rule":
+        print(integration_object.composite_simpson(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get())))      
+   
     
 
 integration_object = Integration()
@@ -30,7 +40,7 @@ lowerlim_string = StringVar()
 upperlim_string = StringVar()
 iterations_string = StringVar()
 integration_type_string = StringVar()
-integration_list = ["Midpoint Rule", "Trapezoidal Rule", "Simpson Rule", "Trapezoidal Rule", "Composite Trapezoidal Rule", "Composite Simpson Rule"]
+integration_list = ["Midpoint Rule", "Trapezoidal Rule", "Simpson Rule", "Composite Midpoint Rule", "Composite Trapezoidal Rule", "Composite Simpson Rule"]
 new_list = []
 result_string = StringVar()
 error_string = StringVar()
@@ -76,4 +86,3 @@ right_main_frame.grid(row = 0, column = 1)
 
 int_window.mainloop()
 
-#print(integration_object.composite_simpson(0, 10, parseString(function_string.get()), 10))
