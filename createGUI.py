@@ -27,10 +27,7 @@ def integrate():
             code_error_string.set("Missing an upper or lower limit.")
         else:    
             if integration_type_string.get() == "Midpoint Rule":
-                if (iterations_string.get() == ""): 
-                    code_error_string.set("Missing number of iterations.")
-                else:
-                    answer, error_return = integration_object.midpoint_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string, int(iterations_string.get()))
+                answer, error_return = integration_object.midpoint_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string)
             
             elif integration_type_string.get() == "Trapezoidal Rule":
                 answer, error_return = integration_object.trapezoidal_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string)
@@ -104,7 +101,7 @@ integrate_button = Button(left_main_frame, text = "Integrate", width = 12, justi
 result_label = Label(right_main_frame, text = "Result for this Rule:", relief = "solid", width=30)
 result_message = Message(right_main_frame, textvariable = result_string, relief = "solid", width = 50, anchor = W)
 error_label = Label(right_main_frame, text = "Error Difference of Using this Rule:" , relief = "solid", width=30)
-error_message = Message(right_main_frame, textvariable = error_string, relief = "solid", width = 50, anchor = W )
+error_message = Message(right_main_frame, textvariable = error_string, relief = "solid", width = 159, anchor = W )
 
 
 left_main_frame.grid(row = 0, column = 0, sticky = "nsew")

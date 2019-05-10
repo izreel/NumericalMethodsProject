@@ -13,7 +13,7 @@ class Integration:
     def funct(self, x):
         return eval(self.function_string)
 
-    def midpoint_rule(self, a, b, f, n):
+    def midpoint_rule(self, a, b, f):
         self.set_function_string(f)
         h = (b - a) / (2)
         error = (h ** 3) / 3 * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
