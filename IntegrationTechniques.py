@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt, log
+from numpy import cos, sin, tan, arccos, arcsin, arctan, e, pi, sqrt, log
 from scipy.misc import derivative
 
 
@@ -31,12 +31,12 @@ class Integration:
         :return: integration result of f over [a,b] and its error
         '''
         self.set_function_string(f)
-        h = (b - a) / (2)
+        h = (b-a)/2
 
         # calculates the error for the method uses the midpoint of the interval to pass to f(n)(x)
         error = (h ** 3) / 3 * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
 
-        return 2*h*self.funct(h), error
+        return 2* h*self.funct((b+a)/2), error
 
     def trapezoidal_rule(self, a, b, f):
         '''
