@@ -101,9 +101,9 @@ code_error_message = Message(left_main_frame, textvariable = code_error_string, 
 
 integrate_button = Button(left_main_frame, text = "Integrate", width = 12, justify = CENTER , command = integrate)
 
-result_label = Label(right_main_frame, text = "Result for Midpoint Rule:", relief = "solid", width=30)
+result_label = Label(right_main_frame, text = "Result for this Rule:", relief = "solid", width=30)
 result_message = Message(right_main_frame, textvariable = result_string, relief = "solid", width = 50, anchor = W)
-error_label = Label(right_main_frame, text = "% Error of Midpoint Rule:" , relief = "solid", width=30)
+error_label = Label(right_main_frame, text = "Error Difference of Using this Rule:" , relief = "solid", width=30)
 error_message = Message(right_main_frame, textvariable = error_string, relief = "solid", width = 50, anchor = W )
 
 
