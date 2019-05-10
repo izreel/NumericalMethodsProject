@@ -1,4 +1,5 @@
 from tkinter import*
+from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt
 from IntegrationTechniques import Integration
 
 def parseString(function_string):
@@ -9,7 +10,6 @@ def parseString(function_string):
         else:
             temp_string = temp_string + i
     return temp_string
-
 
 
 def integrate():
@@ -30,13 +30,13 @@ def integrate():
                 if (iterations_string.get() == ""): 
                     code_error_string.set("Missing number of iterations.")
                 else:
-                    answer, error_return = integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                    answer, error_return = integration_object.midpoint_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Trapezoidal Rule":
-                answer, error_return = integration_object.trapezoidal_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string)
+                answer, error_return = integration_object.trapezoidal_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string)
             
             elif integration_type_string.get() == "Simpson Rule":
-                answer, error_return = integration_object.simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string)
+                answer, error_return = integration_object.simpson_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string)
             
             elif integration_type_string.get() == "Composite Midpoint Rule":
                 if (iterations_string.get() == ""): 
@@ -45,13 +45,13 @@ def integrate():
                     if (int(iterations_string.get()) % 2 ):
                         error = TRUE
                     else:
-                        answer, error_return = integration_object.composite_midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                        answer, error_return = integration_object.composite_midpoint_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Composite Trapezoidal Rule":
                 if (iterations_string.get() == ""): 
                     code_error_string.set("Missing number of iterations.")
                 else:
-                    answer, error_return = integration_object.composite_trapezoid_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                    answer, error_return = integration_object.composite_trapezoidal_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Composite Simpson Rule":
                 if (iterations_string.get() == ""): 
@@ -60,7 +60,7 @@ def integrate():
                     if (int(iterations_string.get()) % 2 ):
                         error = TRUE
                     else:
-                        answer = integration_object.composite_simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                        answer, error_return = integration_object.composite_simpson_rule(eval(lowerlim_string.get()), eval(upperlim_string.get()), new_string, int(iterations_string.get()))
             if (error):
                 code_error_string.set("Number of iterations cannot be odd for Simpson's Rule.")
             

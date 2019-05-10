@@ -15,10 +15,10 @@ class Integration:
 
     def midpoint_rule(self, a, b, f, n):
         self.set_function_string(f)
-        h = (b - a) / (n + 2)
+        h = (b - a) / (2)
         error = (h ** 3) / 3 * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
 
-        return 2 * h * self.funct((a + b) / 2), error
+        return 2*h*self.funct(h), error
 
     def trapezoidal_rule(self, a, b, f):
         self.set_function_string(f)
@@ -44,12 +44,15 @@ class Integration:
         h = (b - a) / (n + 2)
         final_sum = 0
 
-        for i in range(0, int(n / 2) + 1):
-            x = a + i * h
-            final_sum += self.funct(x)
+        for i in range(n + 2):
+            x = a + (i + 1) * h
+            if (i % 2 == 0):
+                final_sum += self.funct(x);
+                print(final_sum)
+
 
         error = ((b - a) / 6) * (h ** 2) * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
-        return final_sum * h, error
+        return final_sum * 2*h, error
 
     def composite_trapezoidal_rule(self, a, b, f, n):
         '''Performs the Midpoint Rule or Rectangular Integration on interval [a,b]
@@ -61,15 +64,14 @@ class Integration:
         h = (b - a) / n
         temp_xa = self.funct(a)
         temp_xb = self.funct(b)
-
-        final_sum = (temp_xa + temp_xb)
-
+        final_sum = 0
         for i in range(1, n):
             x = a + i * h
             final_sum += self.funct(x)
 
+
         error = -((b - a) / 12) * (h ** 2) * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
-        return final_sum * h / 2, error
+        return (2*final_sum + temp_xa + temp_xb) * h / 2, error
 
     def composite_simpson_rule(self, a, b, f, n):
         '''Performs Composite Simpson technique on interval [a,b]
@@ -86,7 +88,7 @@ class Integration:
         x1 = 0
         x2 = 0
 
-        for i in range(n):
+        for i in range(1,n):
             x = a + i * h
             if i % 2 == 0:
                 x2 += self.funct(x)
