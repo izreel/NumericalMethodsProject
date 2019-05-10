@@ -1,5 +1,5 @@
 from tkinter import*
-from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt
+from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt, log
 from IntegrationTechniques import Integration
 
 def parseString(function_string):
