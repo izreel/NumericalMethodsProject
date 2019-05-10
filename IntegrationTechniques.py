@@ -48,8 +48,6 @@ class Integration:
             x = a + (i + 1) * h
             if (i % 2 == 0):
                 final_sum += self.funct(x);
-                print(final_sum)
-
 
         error = ((b - a) / 6) * (h ** 2) * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
         return final_sum * 2*h, error
