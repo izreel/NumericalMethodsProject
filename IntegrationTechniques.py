@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt
+from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, log
 from scipy.misc import derivative
 
 
