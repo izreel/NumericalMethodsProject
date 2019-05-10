@@ -71,7 +71,7 @@ class Integration:
         error = -((b - a) / 12) * (h ** 2) * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
         return final_sum * h / 2, error
 
-    def composite_simpson(self, a, b, f, n):
+    def composite_simpson_rule(self, a, b, f, n):
         '''Performs Composite Simpson technique on interval [a,b]
             :param f: function f that will be integrated
             :param n: number of subintervals in [a,b]

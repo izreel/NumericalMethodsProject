@@ -22,41 +22,52 @@ def integrate():
     else:
         new_string = parseString(function_string.get())
         answer = 0.0
-        if (lowerlim_string.get() == "") or (upperlim_string.get() == "") or (iterations_string.get() == ""): 
-            code_error_string.set("Missing one of the parameters.")
+        error_return = ""
+        if (lowerlim_string.get() == "") or (upperlim_string.get() == ""): 
+            code_error_string.set("Missing an upper or lower limit.")
         else:    
             if integration_type_string.get() == "Midpoint Rule":
-                answer = integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                if (iterations_string.get() == ""): 
+                    code_error_string.set("Missing number of iterations.")
+                else:
+                    answer, error_return = integration_object.midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Trapezoidal Rule":
-                answer = integration_object.trapezoidal_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                answer, error_return = integration_object.trapezoidal_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string)
             
             elif integration_type_string.get() == "Simpson Rule":
-                if (int(iterations_string.get()) % 2 ):
-                    error = TRUE
-                else:
-                    answer = integration_object.simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                answer, error_return = integration_object.simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string)
             
             elif integration_type_string.get() == "Composite Midpoint Rule":
-                if (int(iterations_string.get()) % 2 ):
-                    error = TRUE
+                if (iterations_string.get() == ""): 
+                    code_error_string.set("Missing number of iterations.")
                 else:
-                    answer = integration_object.composite_midpoint(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                    if (int(iterations_string.get()) % 2 ):
+                        error = TRUE
+                    else:
+                        answer, error_return = integration_object.composite_midpoint_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Composite Trapezoidal Rule":
-                answer = integration_object.composite_trapezoid(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                if (iterations_string.get() == ""): 
+                    code_error_string.set("Missing number of iterations.")
+                else:
+                    answer, error_return = integration_object.composite_trapezoid_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
             
             elif integration_type_string.get() == "Composite Simpson Rule":
-                if (int(iterations_string.get()) % 2 ):
-                    error = TRUE
+                if (iterations_string.get() == ""): 
+                    code_error_string.set("Missing number of iterations.")
                 else:
-                    answer = integration_object.composite_simpson(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
+                    if (int(iterations_string.get()) % 2 ):
+                        error = TRUE
+                    else:
+                        answer = integration_object.composite_simpson_rule(int(lowerlim_string.get()), int(upperlim_string.get()), new_string, int(iterations_string.get()))
             if (error):
                 code_error_string.set("Number of iterations cannot be odd for Simpson's Rule.")
             
             else:
                 answer = float("{0:.3f}".format(answer))
-                result_string.set(str(answer))   
+                result_string.set(str(answer))
+                error_string.set(error_return)   
 
     
 
