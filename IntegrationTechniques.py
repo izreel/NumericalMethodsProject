@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, sqrt
+from numpy import cos, sin, tan, arccos, arcsin, arctan, exp, pi, log
 from scipy.misc import derivative
 
 
@@ -45,11 +45,11 @@ class Integration:
         final_sum = 0
 
         for i in range(0, int(n / 2) + 1):
-            x = a + i * h
+            x = a + (i+1) * h
             final_sum += self.funct(x)
 
         error = ((b - a) / 6) * (h ** 2) * derivative(self.funct, (b + a) / 2, dx=0.1, n=2, order=3)
-        return final_sum * h, error
+        return final_sum * h*2, error
 
     def composite_trapezoidal_rule(self, a, b, f, n):
         '''Performs the Midpoint Rule or Rectangular Integration on interval [a,b]
